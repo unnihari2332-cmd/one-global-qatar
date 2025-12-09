@@ -12,40 +12,43 @@ const About = () => {
     <section id="about" className="py-20 bg-background">
       <div className="container mx-auto px-4">
         
-        {/* Main Grid */}
+        {/* Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-          {/* Left: Image */}
+          
+          {/* Image Section */}
           <div className="relative animate-fade-in">
-            <img 
-              src="/About01.png" 
-              alt="About One Global Consolidators" 
-              className="w-full h-auto object-cover rounded-lg shadow-xl drop-shadow-[0_0_25px_rgba(0,102,255,0.6)] relative z-10"
+            <img
+              src="/About01.png"
+              alt="About One Global Consolidators"
+              className="w-full h-auto object-cover rounded-xl relative"
+              style={{
+                filter: "drop-shadow(0px 25px 60px rgba(0, 102, 255, 0.45))"
+              }}
             />
-
-            {/* Decorative Block Behind Image */}
-            <div className="absolute -bottom-4 -left-4 w-full h-full bg-accent/10 rounded-lg -z-10 hidden md:block"></div>
           </div>
 
-          {/* Right: Text Content */}
+          {/* Text Section */}
           <div>
-
-            {/* Heading */}
             <div className="text-center lg:text-left mb-8">
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
                 ABOUT US
               </h2>
+
               <div className="w-20 h-1 bg-accent mx-auto lg:mx-0 mb-6" />
             </div>
 
-            {/* Paragraphs */}
             <div className="text-center lg:text-left">
               <p className="font-body text-lg text-muted-foreground leading-relaxed mb-8">
-                One Global Consolidators (OGC) is a licensed freight forwarding company. OGC is known worldwide for operating a fully fledged container services across the globe. Our team is backed by decades of experience in the freight forwarding and logistics industry, ensuring that we deliver exceptional service to every customer.
+                One Global Consolidators (OGC) is a licensed freight forwarding company known 
+                globally for providing fully-fledged container services across major trade routes. 
+                Backed by decades of deep industry expertise, our team ensures every customer 
+                receives world-class logistics support.
               </p>
 
               <p className="font-body text-lg text-muted-foreground leading-relaxed mb-10">
-                We specialize in providing comprehensive logistics solutions tailored to meet the unique needs of businesses worldwide. Our commitment to excellence and customer satisfaction has made us a trusted partner for companies seeking reliable freight management services.
+                We offer tailored logistics and freight management solutions designed to meet 
+                the diverse needs of businesses around the world. Excellence, transparency, and 
+                customer satisfaction are the pillars that define our service.
               </p>
 
               {/* Highlights */}
