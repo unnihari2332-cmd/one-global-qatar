@@ -1,4 +1,4 @@
-import heroImage from '@/assets/hero-port.jpg';
+import heroImage from '@/About01.png';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
