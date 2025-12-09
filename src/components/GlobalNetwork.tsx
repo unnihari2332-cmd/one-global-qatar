@@ -1,42 +1,52 @@
-import { Globe, MapPin, Ship, Plane, Warehouse, Container } from 'lucide-react';
+import { Users, UserCheck, FileText, Route, Globe, Cloud } from 'lucide-react';
 
 const GlobalNetwork = () => {
-  const locations = [
-    { icon: Globe, name: 'United States', description: 'Major ports coverage' },
-    { icon: MapPin, name: 'Europe', description: 'EU-wide logistics' },
-    { icon: Ship, name: 'Asia Pacific', description: 'Comprehensive network' },
-    { icon: Plane, name: 'UAE & Middle East', description: 'Strategic hub' },
-    { icon: Warehouse, name: 'Jebel Ali Free Zone', description: 'Logistics Facility' },
-    { icon: Container, name: 'Doha, Qatar', description: 'Head Office' },
+  // Updated data to match the image provided
+  const features = [
+    { icon: Users, name: 'Consol Mate' },
+    { icon: UserCheck, name: 'Partner Portal' }, // Using UserCheck to represent the partner team
+    { icon: FileText, name: 'E-DO' },
+    { icon: Route, name: 'Live Tracking' },
+    { icon: Globe, name: 'Integrated Digital Logistics Platform' },
+    { icon: Cloud, name: 'Cloud Based' },
   ];
 
   return (
-    <section className="py-20 bg-secondary">
+    <section className="py-20 bg-background">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
+        {/* Header Section */}
+        <div className="text-center mb-16">
+          <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4 uppercase">
             OUR GLOBAL NETWORK
           </h2>
-          <div className="w-20 h-1 bg-accent mx-auto mb-6" />
-          <p className="font-body text-muted-foreground max-w-2xl mx-auto">
-            With strategically located offices and partners worldwide, we ensure seamless logistics operations across continents.
+          {/* Optional accent line */}
+          <div className="w-20 h-1 bg-accent mx-auto mb-8" />
+          
+          {/* Long Description Text from Image */}
+          <p className="font-body text-muted-foreground leading-relaxed max-w-5xl mx-auto text-justify md:text-center">
+            ONE Global Logistics services W.L.L has a strong & Reliable Worldwide Agent network. OGL believes in Technology driven Logistic solution to provide a transparent and hassle free service to its agents & Customers. The strength of any organization is its individuals, and we are no different. We have good number of staffs catering to the business needs of the market. The departments are headed by professionals who have many years of experience in the logistics field as a neutral Sea LCL Consolidation Service Provider to serve the QATAR our network guarantees schedule integrity that's next to none. We have the best transit cycle, reliability, and rates you can find, along with the flexibility you want when it comes to smaller loads. Get in touch with our logistics team at Qatar – ONE GLOBAL LOGISTICS SERVICES now and we shall guarantee timely and professional services.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-          {locations.map((location, index) => {
-            const Icon = location.icon;
+        {/* Icons Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-y-12 gap-x-8 max-w-4xl mx-auto">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
             return (
               <div
                 key={index}
-                className="group bg-background p-6 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 text-center animate-scale-in cursor-pointer"
+                className="flex flex-col items-center animate-scale-in"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-accent group-hover:scale-110 transition-all duration-300">
-                  <Icon className="w-8 h-8 text-primary group-hover:text-accent-foreground transition-colors" />
+                {/* Icon Container: Dark blue background with rounded corners matching the image */}
+                <div className="w-20 h-20 mb-4 bg-primary rounded-2xl flex items-center justify-center shadow-lg hover:scale-105 transition-transform duration-300">
+                  <Icon className="w-10 h-10 text-primary-foreground" />
                 </div>
-                <h3 className="font-heading font-semibold text-primary mb-1">{location.name}</h3>
-                <p className="font-body text-sm text-muted-foreground">{location.description}</p>
+                
+                {/* Label */}
+                <h3 className="font-heading font-medium text-primary text-center max-w-[150px] leading-tight">
+                  {feature.name}
+                </h3>
               </div>
             );
           })}
