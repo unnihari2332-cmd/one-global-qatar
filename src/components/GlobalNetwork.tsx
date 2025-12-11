@@ -43,10 +43,10 @@ const GlobalNetwork = () => {
         {/* Header Section */}
         <div className="text-center mb-20">
           <div className="inline-block">
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-3 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold mb-3 tracking-tight" style={{ color: '#1e3a5f' }}>
               OUR GLOBAL NETWORK
             </h2>
-            <div className="h-1 bg-gradient-to-r from-transparent via-blue-600 to-transparent" />
+            <div className="h-1 bg-gradient-to-r from-transparent via-red-600 to-transparent" />
           </div>
           
           <p className="mt-8 text-lg text-slate-600 leading-relaxed max-w-4xl mx-auto">
@@ -65,7 +65,7 @@ const GlobalNetwork = () => {
             return (
               <div
                 key={index}
-                className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200 hover:border-blue-300"
+                className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 border border-slate-200"
                 style={{ 
                   animationDelay: `${index * 0.1}s`,
                   opacity: 0,
@@ -73,16 +73,16 @@ const GlobalNetwork = () => {
                 }}
               >
                 {/* Hover gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl" style={{ background: 'linear-gradient(to bottom right, rgba(30, 58, 95, 0.05), transparent)' }} />
                 
                 <div className="relative">
                   {/* Icon Container */}
-                  <div className="w-16 h-16 mb-5 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <div className="w-16 h-16 mb-5 rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300" style={{ background: 'linear-gradient(to bottom right, #1e3a5f, #2d5a8c)' }}>
                     <Icon className="w-8 h-8 text-white" strokeWidth={2} />
                   </div>
                   
                   {/* Label */}
-                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-700 transition-colors">
+                  <h3 className="text-xl font-bold mb-2 transition-colors" style={{ color: '#1e3a5f' }}>
                     {feature.name}
                   </h3>
                   
