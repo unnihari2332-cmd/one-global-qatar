@@ -23,7 +23,9 @@ const Contact = () => {
     setFormData({ name: '', email: '', phone: '', message: '' });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -31,12 +33,21 @@ const Contact = () => {
     {
       icon: MapPin,
       title: 'Address',
-      lines: ['One Global Logistics Services WLL', 'Al Nasr Tower A', 'Al Corniche Street', 'Doha, Qatar'],
+      lines: [
+        'One Global Logistics Services WLL',
+        'Al Nasr Tower A',
+        'Al Corniche Street',
+        'Doha, Qatar',
+      ],
     },
     {
       icon: Phone,
       title: 'Phone',
-      lines: ['International: +974 4000 1234', 'Freight Services: +974 4000 5678', 'Customer Support: +974 4000 9012'],
+      lines: [
+        'International: +974 4000 1234',
+        'Freight Services: +974 4000 5678',
+        'Customer Support: +974 4000 9012',
+      ],
     },
     {
       icon: Mail,
@@ -51,20 +62,21 @@ const Contact = () => {
   ];
 
   return (
-    <section id="contact" className="relative py-20 overflow-hidden">
-
-      {/* --- Background Image (Using <img> tag for better reliability) --- */}
+    <section
+      id="contact"
+      className="relative py-20 overflow-hidden min-h-[600px]"
+    >
+      {/* Background Image */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="/about-bg.webp" 
-          alt="Background" 
+        <img
+          src="/about-bg.webp"
+          alt="Contact Background"
           className="w-full h-full object-cover"
         />
-        {/* Light Overlay: Ensures text is readable over the image. */}
-        <div className="absolute inset-0 bg-white/90" />
+        <div className="absolute inset-0 bg-white/90"></div>
       </div>
 
-      {/* Content Container (z-10 ensures it sits on top) */}
+      {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary mb-4">
@@ -72,57 +84,60 @@ const Contact = () => {
           </h2>
           <div className="w-20 h-1 bg-accent mx-auto mb-6" />
           <p className="font-body text-muted-foreground max-w-2xl mx-auto">
-            Get in touch with our team for inquiries, quotes, or any questions about our services.
+            Get in touch with our team for inquiries, quotes, or any questions
+            about our services.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Form */}
-          <div className="bg-background p-8 rounded-xl shadow-sm animate-slide-in-left">
-            <h3 className="font-heading text-xl font-bold text-primary mb-6">Send us a Message</h3>
+          <div className="bg-background p-8 rounded-xl shadow-md animate-slide-in-left">
+            <h3 className="font-heading text-xl font-bold text-primary mb-6">
+              Send us a Message
+            </h3>
+
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Input
-                  name="name"
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={handleChange}
-                  required
-                  className="font-body"
-                />
-              </div>
-              <div>
-                <Input
-                  name="email"
-                  type="email"
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  className="font-body"
-                />
-              </div>
-              <div>
-                <Input
-                  name="phone"
-                  placeholder="Your Phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  className="font-body"
-                />
-              </div>
-              <div>
-                <Textarea
-                  name="message"
-                  placeholder="Your Message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="font-body resize-none"
-                />
-              </div>
-              <Button type="submit" className="w-full bg-accent hover:bg-red-hover text-accent-foreground font-body font-semibold">
+              <Input
+                name="name"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                className="font-body"
+              />
+
+              <Input
+                name="email"
+                type="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                className="font-body"
+              />
+
+              <Input
+                name="phone"
+                placeholder="Your Phone"
+                value={formData.phone}
+                onChange={handleChange}
+                className="font-body"
+              />
+
+              <Textarea
+                name="message"
+                placeholder="Your Message"
+                value={formData.message}
+                onChange={handleChange}
+                required
+                rows={5}
+                className="font-body resize-none"
+              />
+
+              <Button
+                type="submit"
+                className="w-full bg-accent hover:bg-red-hover text-accent-foreground font-body font-semibold"
+              >
                 <Send className="w-4 h-4 mr-2" />
                 Send Message
               </Button>
@@ -131,19 +146,30 @@ const Contact = () => {
 
           {/* Contact Information */}
           <div className="animate-slide-in-right">
-            <h3 className="font-heading text-xl font-bold text-primary mb-6">Our Office</h3>
+            <h3 className="font-heading text-xl font-bold text-primary mb-6">
+              Our Office
+            </h3>
+
             <div className="space-y-6">
               {contactInfo.map((info, index) => {
                 const Icon = info.icon;
                 return (
                   <div key={index} className="flex gap-4">
-                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center flex-shrink-0">
+                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
                       <Icon className="w-5 h-5 text-primary-foreground" />
                     </div>
+
                     <div>
-                      <h4 className="font-heading font-semibold text-primary mb-1">{info.title}</h4>
+                      <h4 className="font-heading font-semibold text-primary mb-1">
+                        {info.title}
+                      </h4>
                       {info.lines.map((line, idx) => (
-                        <p key={idx} className="font-body text-muted-foreground text-sm">{line}</p>
+                        <p
+                          key={idx}
+                          className="font-body text-muted-foreground text-sm"
+                        >
+                          {line}
+                        </p>
                       ))}
                     </div>
                   </div>
