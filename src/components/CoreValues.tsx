@@ -1,63 +1,103 @@
+import Image from 'next/image';
 import { Shield, Award, Handshake, Clock } from 'lucide-react';
+import heroImg from '@/assets/digital-logistics.png'; // replace with actual image path
 
-const CoreValues = () => {
+const CoreValuesPage = () => {
   const values = [
     {
-      icon: Shield,
       title: 'Strive for excellence',
-      description: 'We are a true client-centric company, so we strive for the best possible solutions for our clients.',
+      icon: Shield,
     },
     {
+      title: 'Adapt, learn & assimilate the best industry practices',
       icon: Award,
-      title: 'Accept, learn & educate from best industry practices',
-      description: 'Continuous improvement through industry-leading practices and knowledge sharing.',
     },
     {
+      title: 'Open & honest relationship with communications',
       icon: Handshake,
-      title: 'Open & honest relationship with customers',
-      description: 'Building trust through transparency and genuine partnerships.',
     },
     {
+      title: 'Embrace innovation',
       icon: Clock,
-      title: 'Continuous Innovation',
-      description: 'Embracing new technologies and methods to improve our services constantly.',
     },
   ];
 
   return (
-    <section className="py-20 bg-secondary">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-6">
-          <p className="font-body text-accent font-semibold tracking-wider mb-2">CORE VALUES SEGMENT</p>
-          <p className="font-body text-muted-foreground max-w-3xl mx-auto">
-            We are a true client-centric company so we strive with the client's business instead of just selling logistics/freight forwarding services. We invest in innovation to stay ahead of the challenges facing the shipping industry and are backed by strong financial stability.
-          </p>
+    <section className="py-20 bg-white">
+      <div className="container mx-auto px-6">
+        {/* Top content */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+          <div>
+            <h2 className="font-heading text-2xl font-bold text-primary mb-4">OGL - Digital Logistics</h2>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              It’s our solution-based logistics services coupled with the best technology that makes us standout.
+              We believe in providing the right services using the right tools at the right time.
+            </p>
+            <ul className="space-y-3 text-sm text-muted-foreground list-disc pl-5">
+              <li>Integrated multi logistics platforms</li>
+              <li>Live end to end supply chain visibility</li>
+              <li>Customized portals to customer communications</li>
+              <li>Tools to automate customer communications</li>
+              <li>Real time business intelligence and reporting</li>
+            </ul>
+          </div>
+
+          <div className="relative w-full h-[360px] rounded-xl overflow-hidden shadow-lg">
+            <Image
+              src={heroImg}
+              alt="Digital Logistics"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-          {values.map((value, index) => {
-            const Icon = value.icon;
-            return (
-              <div
-                key={index}
-                className="text-center animate-fade-in"
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
-                <div className="relative w-32 h-32 mx-auto mb-6">
-                  <div className="absolute inset-0 rounded-full border-4 border-accent/20" />
-                  <div className="absolute inset-2 rounded-full bg-gradient-to-br from-primary to-navy-light flex items-center justify-center">
-                    <Icon className="w-12 h-12 text-primary-foreground" />
+        {/* Core values layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
+          {/* Left values */}
+          <div className="space-y-10">
+            {values.slice(0, 2).map((value, index) => {
+              const Icon = value.icon;
+              return (
+                <div key={index} className="flex flex-col items-center text-center border rounded-xl p-8 shadow-sm">
+                  <div className="w-20 h-20 rounded-full border-2 border-primary flex items-center justify-center mb-4">
+                    <Icon className="w-8 h-8 text-accent" />
                   </div>
+                  <p className="font-semibold text-primary">{value.title}</p>
                 </div>
-                <h3 className="font-heading font-bold text-lg text-primary mb-3">{value.title}</h3>
-                <p className="font-body text-sm text-muted-foreground">{value.description}</p>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
+
+          {/* Center image */}
+          <div className="relative w-full h-[420px] rounded-xl overflow-hidden">
+            <Image
+              src={heroImg}
+              alt="Logistics Truck"
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          {/* Right values */}
+          <div className="space-y-10">
+            {values.slice(2).map((value, index) => {
+              const Icon = value.icon;
+              return (
+                <div key={index} className="flex flex-col items-center text-center border rounded-xl p-8 shadow-sm">
+                  <div className="w-20 h-20 rounded-full border-2 border-primary flex items-center justify-center mb-4">
+                    <Icon className="w-8 h-8 text-accent" />
+                  </div>
+                  <p className="font-semibold text-primary">{value.title}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </section>
   );
 };
 
-export default CoreValues;
+export default CoreValuesPage;
