@@ -31,11 +31,7 @@ const GlobalNetwork = () => {
           <div className="mx-auto h-1 w-40 bg-gradient-to-r from-transparent via-red-500 to-transparent" />
 
           <p className="mt-8 text-lg text-blue-100 leading-relaxed max-w-4xl mx-auto">
-            ONE Global Logistics services W.L.L has a strong & reliable worldwide agent network. OGL believes in technology-driven logistic solutions to provide transparent and hassle-free service to its agents & customers. The strength of any organization is its individuals, and we are no different. We have a dedicated team led by experienced professionals serving as a neutral Sea LCL Consolidation Service Provider to Qatar.
-          </p>
-
-          <p className="mt-4 text-lg text-blue-100 leading-relaxed max-w-4xl mx-auto">
-            Our network guarantees unmatched schedule integrity, best-in-class transit cycles, reliable rates, and flexibility for smaller shipments.
+            ONE Global Logistics services W.L.L has a strong & Reliable Worldwide Agent network. OGL believes in technology-driven logistics solutions to provide transparent and hassle-free service to its agents & customers. The strength of any organization is its people, and we are no different. We have a dedicated team catering to the business needs of the market, led by professionals with many years of experience in the logistics field as a neutral Sea LCL Consolidation Service Provider serving Qatar. Our network guarantees schedule integrity that’s second to none, offering the best transit cycles, reliability, and competitive rates, along with the flexibility required for smaller loads.
           </p>
         </div>
 
