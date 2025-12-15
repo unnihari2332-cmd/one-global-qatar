@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Plane, Ship, Truck, Package, Boxes, Warehouse } from "lucide-react";
 import OneGlobalCard from "./OneGlobalCard";
 
@@ -67,7 +66,7 @@ const ServicesScroll = () => {
   ];
 
   return (
-    <section className="bg-[#0E3A45] py-24 overflow-hidden">
+    <section className="bg-[#0E3A45] py-24">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-14 text-white">
@@ -82,26 +81,11 @@ const ServicesScroll = () => {
           </p>
         </div>
 
-        {/* Horizontal Scroll */}
-        <motion.div
-          className="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-8 scrollbar-hide"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-        >
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <div
-              key={index}
-              className="min-w-[300px] sm:min-w-[340px] lg:min-w-[360px] snap-center"
-            >
-              <OneGlobalCard {...service} />
-            </div>
+            <OneGlobalCard key={index} {...service} />
           ))}
-        </motion.div>
-
-        {/* Hint */}
-        <div className="text-center text-gray-300 text-sm mt-6">
-          ← Scroll to view all services →
         </div>
       </div>
     </section>
