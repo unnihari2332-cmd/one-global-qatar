@@ -1,44 +1,137 @@
 import React, { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
+import {
+  Plane,
+  Ship,
+  Truck,
+  Package,
+  Boxes,
+  Warehouse,
+  FileCheck,
+  DollarSign,
+} from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
-import { Plane, Ship, Truck, Package, Boxes, Warehouse } from "lucide-react";
+
+/* ======================================================
+   OLD SECTION – KEY FEATURES (UNCHANGED STYLE)
+====================================================== */
+
+const KeyFeatures = () => {
+  const features = [
+    {
+      icon: Package,
+      title: "Optimize Orders",
+      description:
+        "Optimize orders into container shipments for efficient delivery.",
+    },
+    {
+      icon: Boxes,
+      title: "Consolidation Handling",
+      description:
+        "Expert consolidation handling for both LCL and FCL shipments.",
+    },
+    {
+      icon: FileCheck,
+      title: "Comprehensive",
+      description:
+        "We offer comprehensive full container services worldwide.",
+    },
+    {
+      icon: DollarSign,
+      title: "Cost Effective",
+      description:
+        "Cost-effective solutions tailored for your shipping needs.",
+    },
+  ];
+
+  return (
+    <section className="py-24 bg-background relative overflow-hidden">
+      {/* Curved dashed line */}
+      <svg
+        className="absolute top-1/2 left-0 w-full -translate-y-1/2"
+        height="140"
+        viewBox="0 0 1200 200"
+        fill="none"
+      >
+        <path
+          d="M 0 100 C 300 20, 600 180, 900 100 S 1200 20, 1400 100"
+          stroke="#3d5548"
+          strokeWidth="4"
+          strokeDasharray="10 12"
+          className="opacity-40"
+        />
+      </svg>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="text-center mb-16">
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
+            SEA (LCL & FCL) / AIR FREIGHT – KEY FEATURES
+          </h2>
+          <div className="w-20 h-1 bg-accent mx-auto" />
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 pt-10">
+          {features.map((feature, index) => {
+            const Icon = feature.icon;
+            return (
+              <div key={index} className="relative text-center">
+                {/* Icon */}
+                <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center">
+                  <Icon className="w-8 h-8 text-primary" />
+                </div>
+
+                {/* Text */}
+                <div className="pt-14">
+                  <h3 className="font-bold text-xl text-primary mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    {feature.description}
+                  </p>
+                </div>
+
+                {/* Number */}
+                <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-6xl font-bold text-gray-200 opacity-40">
+                  {`0${index + 1}`}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+/* ======================================================
+   CARD COMPONENT
+====================================================== */
 
 const OneGlobalCard = ({ image, title, points, icon }) => {
   return (
     <motion.div
-      whileHover={{ y: -4 }}
-      whileTap={{ scale: 0.985 }}
+      whileHover={{ y: -6 }}
       transition={{ type: "spring", stiffness: 220, damping: 20 }}
-      className="group relative flex flex-col overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md hover:shadow-xl transition-all duration-300"
+      className="bg-white rounded-xl shadow-md hover:shadow-xl overflow-hidden"
     >
-      {/* Image */}
-      <div className="relative">
-        <AspectRatio ratio={16 / 9}>
-          <img
-            src={image}
-            alt={title}
-            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-            loading="lazy"
-          />
-        </AspectRatio>
+      <AspectRatio ratio={16 / 9}>
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover"
+        />
+      </AspectRatio>
 
-        {/* Logo badge */}
-        <div className="absolute top-3 left-3 flex items-center gap-1 backdrop-blur-sm py-1 shadow-sm">
-          <img src="/ogl-logo.png" alt="One Global Logo" className="h-4 w-auto" />
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="flex flex-col flex-grow p-5 text-[#0B1739]">
-        <div className="flex items-center gap-2 text-[#0B1739] font-semibold mb-2">
-          {React.cloneElement(icon, { size: 16 })}
-          <h3 className="text-base font-semibold">{title}</h3>
+      <div className="p-5">
+        <div className="flex items-center gap-2 font-semibold text-[#0B1739] mb-2">
+          {icon}
+          <h3>{title}</h3>
         </div>
 
-        <ul className="text-sm text-gray-600 list-disc pl-5 space-y-1 leading-snug">
-          {points.map((pt, idx) => (
-            <li key={idx}>{pt}</li>
+        <ul className="list-disc pl-5 text-sm text-gray-600 space-y-1">
+          {points.map((pt, i) => (
+            <li key={i}>{pt}</li>
           ))}
         </ul>
       </div>
@@ -46,35 +139,36 @@ const OneGlobalCard = ({ image, title, points, icon }) => {
   );
 };
 
-export const Services = () => {
-  const location = useLocation();
-  useEffect(() => window.scrollTo(0, 0), [location.pathname]);
+/* ======================================================
+   NEW SECTION – SCROLLABLE SERVICES
+====================================================== */
 
+const ServicesScroll = () => {
   const services = [
     {
       image: "/aircargo2.png",
       title: "Air Freight",
-      icon: <Plane />,
+      icon: <Plane size={16} />,
       points: [
         "Express & deferred services",
         "Airport-to-airport & door-to-door",
-        "Dangerous goods & temperature-sensitive cargo",
+        "DG & temperature-controlled cargo",
       ],
     },
     {
       image: "/oceanf.png",
       title: "Sea Freight",
-      icon: <Ship />,
+      icon: <Ship size={16} />,
       points: [
-        "FCL / LCL shipping",
-        "Breakbulk and Ro-Ro solutions",
-        "Global consolidation services",
+        "FCL & LCL solutions",
+        "Breakbulk & Ro-Ro cargo",
+        "Global consolidation network",
       ],
     },
     {
       image: "/CARGO.png",
       title: "Road Freight",
-      icon: <Truck />,
+      icon: <Truck size={16} />,
       points: [
         "GCC distribution",
         "Cross-border trucking",
@@ -83,18 +177,18 @@ export const Services = () => {
     },
     {
       image: "/lovable-uploads/cc.jpg",
-      title: "Customs Clearance & Documentation",
-      icon: <Package />,
+      title: "Customs Clearance",
+      icon: <Package size={16} />,
       points: [
-        "Import/export documentation",
+        "Import & export documentation",
         "Free zone & mainland clearance",
         "Compliance support",
       ],
     },
     {
       image: "/warhouseh1.png",
-      title: "Warehousing & Distribution",
-      icon: <Warehouse />,
+      title: "Warehousing",
+      icon: <Warehouse size={16} />,
       points: [
         "Bonded & non-bonded facilities",
         "Inventory management",
@@ -104,57 +198,64 @@ export const Services = () => {
     {
       image: "/h4.png",
       title: "Project Logistics",
-      icon: <Boxes />,
+      icon: <Boxes size={16} />,
       points: [
-        "Planning & Coordination",  
-        "Operations & Management",
-        "Compliance & Support",   
+        "Planning & coordination",
+        "Heavy & OOG cargo",
+        "End-to-end execution",
       ],
     },
   ];
 
-  const container = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
-  };
-  const item = { hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } };
-
   return (
-    <motion.section
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={container}
-      className="bg-[#F8F9FB] py-20"
-    >
-      <div className="max-w-6xl mx-auto px-4">
+    <section className="bg-[#0E3A45] py-24 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <motion.div variants={item} className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-[#0B1739]">Core Services</h2>
-          <div className="w-24 h-1 bg-[#0B1739] mx-auto mt-3 mb-4"></div>
-          <p className="text-sm md:text-base text-gray-600">
-            Comprehensive logistics solutions built for speed, reliability, and control.
+        <div className="text-center mb-14 text-white">
+          <span className="text-sm uppercase tracking-widest text-orange-400">
+            What We Offer
+          </span>
+          <h2 className="text-4xl font-bold mt-2">
+            Explore Our Services
+          </h2>
+          <p className="text-gray-300 text-sm mt-3 max-w-xl mx-auto">
+            Reliable, scalable and technology-driven logistics solutions.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Services Grid */}
-        <motion.div
-          variants={container}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center"
-        >
+        {/* Horizontal Scroll */}
+        <div className="flex gap-8 overflow-x-auto snap-x snap-mandatory pb-8 scrollbar-hide">
           {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              variants={item}
-              transition={{ duration: 0.5, delay: index * 0.05 }}
-              className="w-full sm:w-[95%] lg:w-[95%]"
+            <div
+              key={index}
+              className="min-w-[300px] sm:min-w-[340px] lg:min-w-[360px] snap-center"
             >
               <OneGlobalCard {...service} />
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
+
+        <div className="text-center text-gray-300 text-sm mt-6">
+          ← Scroll to explore all services →
+        </div>
       </div>
-    </motion.section>
+    </section>
+  );
+};
+
+/* ======================================================
+   FINAL PAGE EXPORT
+====================================================== */
+
+const Services = () => {
+  const location = useLocation();
+  useEffect(() => window.scrollTo(0, 0), [location.pathname]);
+
+  return (
+    <>
+      <KeyFeatures />
+      <ServicesScroll />
+    </>
   );
 };
 
