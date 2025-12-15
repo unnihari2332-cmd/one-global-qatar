@@ -25,7 +25,7 @@ const GlobalNetwork = () => {
       <div className="relative container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white mt-10">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight text-white mt-16">
             OUR GLOBAL NETWORK
           </h2>
           <div className="mx-auto h-1 w-40 bg-gradient-to-r from-transparent via-red-500 to-transparent" />
