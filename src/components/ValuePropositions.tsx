@@ -7,17 +7,14 @@ const ValuePropositions = () => {
     {
       icon: Laptop,
       title: 'On-line Booking',
-      description: 'Streamlined digital booking portal accessible 24/7 for instant scheduling.'
     },
     {
       icon: Bell,
-      title: 'Auto-alerts with milestone updates',
-      description: 'Real-time notifications keeping you and your customers informed at every step.'
+      title: 'Auto-alerts with milestone updates for shipments to customers',
     },
     {
       icon: FileBarChart2,
       title: 'KPI reports with dashboard facility',
-      description: 'Comprehensive analytics and visual dashboards to track performance metrics.'
     },
   ];
 
@@ -37,18 +34,16 @@ const ValuePropositions = () => {
             return (
               <div
                 key={index}
-                className="text-center p-6 animate-scale-in"
+                className="text-center p-6 animate-scale-in flex flex-col items-center"
                 style={{ animationDelay: `${index * 0.15}s` }}
               >
-                <div className="w-20 h-20 mx-auto mb-4 bg-secondary rounded-xl flex items-center justify-center">
+                <div className="w-20 h-20 mb-6 bg-secondary rounded-xl flex items-center justify-center shadow-sm">
                   <Icon className="w-10 h-10 text-primary" />
                 </div>
-                <h3 className="font-heading font-bold text-primary mb-2 h-14 flex items-center justify-center">
+                {/* Added min-h-[3.5rem] to ensure alignment even if titles wrap */}
+                <h3 className="font-heading font-bold text-primary text-lg md:text-xl min-h-[3.5rem] flex items-start justify-center">
                   {prop.title}
                 </h3>
-                <p className="font-body text-sm text-muted-foreground">
-                  {prop.description}
-                </p>
               </div>
             );
           })}
