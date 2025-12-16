@@ -10,7 +10,7 @@ const CoreValues = () => {
           {/* Left Side - Image */}
           <div className="relative">
             <img 
-              src="/cargo-ship.jpg" 
+              src="/cargo-ship.png" 
               alt="Cargo Ship" 
               className="w-full h-auto rounded-3xl shadow-2xl"
             />
