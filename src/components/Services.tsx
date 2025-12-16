@@ -75,12 +75,10 @@ const KeyFeatures = () => {
             const Icon = feature.icon;
             return (
               <div key={index} className="relative text-center">
-                {/* Icon */}
                 <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-20 h-20 bg-white rounded-full shadow-lg flex items-center justify-center">
                   <Icon className="w-8 h-8 text-primary" />
                 </div>
 
-                {/* Text */}
                 <div className="pt-14">
                   <h3 className="font-bold text-xl text-primary mb-3">
                     {feature.title}
@@ -90,7 +88,6 @@ const KeyFeatures = () => {
                   </p>
                 </div>
 
-                {/* Number */}
                 <div className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-6xl font-bold text-gray-200 opacity-40">
                   {`0${index + 1}`}
                 </div>
@@ -134,7 +131,7 @@ const OneGlobalCard = ({ image, title, points, icon }) => {
 };
 
 /* ======================================================
-   NEW SECTION – GRID SERVICES
+   NEW SECTION – GRID SERVICES (BLUE GRADIENT)
 ====================================================== */
 const ServicesScroll = () => {
   const services = [
@@ -201,20 +198,22 @@ const ServicesScroll = () => {
   ];
 
   return (
-    <section className="bg-[#0E3A45] py-24">
+    <section className="py-24 bg-gradient-to-b from-transparent to-[#0E3A45]">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div className="text-center mb-14 text-white">
+        <div className="text-center mb-14">
           <span className="text-sm uppercase tracking-widest text-orange-400">
             What We Offer
           </span>
-          <h2 className="text-4xl font-bold mt-2">Explore Our Services</h2>
-          <p className="text-gray-300 text-sm mt-3 max-w-xl mx-auto">
+          <h2 className="text-4xl font-bold mt-2 text-white">
+            Explore Our Services
+          </h2>
+          <p className="text-gray-200 text-sm mt-3 max-w-xl mx-auto">
             Reliable, scalable and technology-driven logistics solutions.
           </p>
         </div>
 
-        {/* Grid Layout */}
+        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <OneGlobalCard key={index} {...service} />
