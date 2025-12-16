@@ -135,7 +135,7 @@ const OneGlobalCard = ({ image, title, points, icon }) => {
 const ServicesScroll = () => {
   const services = [
     {
-      image: "/aircargo2.png",
+      image: "/airfreight.jpg",
       title: "Air Freight",
       icon: <Plane size={16} />,
       points: [
@@ -145,7 +145,7 @@ const ServicesScroll = () => {
       ],
     },
     {
-      image: "/oceanf.png",
+      image: "/seafreight.jpg",
       title: "Sea Freight",
       icon: <Ship size={16} />,
       points: [
@@ -155,7 +155,7 @@ const ServicesScroll = () => {
       ],
     },
     {
-      image: "/CARGO.png",
+      image: "/roadfreight.jpg",
       title: "Road Freight",
       icon: <Truck size={16} />,
       points: [
@@ -165,7 +165,7 @@ const ServicesScroll = () => {
       ],
     },
     {
-      image: "/lovable-uploads/cc.jpg",
+      image: "/Customsclearance.jpg",
       title: "Customs Clearance",
       icon: <Package size={16} />,
       points: [
@@ -175,7 +175,7 @@ const ServicesScroll = () => {
       ],
     },
     {
-      image: "/warhouseh1.png",
+      image: "/Warehousing.jpg",
       title: "Warehousing",
       icon: <Warehouse size={16} />,
       points: [
@@ -185,7 +185,7 @@ const ServicesScroll = () => {
       ],
     },
     {
-      image: "/h4.png",
+      image: "/Projectlogistics.jpg",
       title: "Project Logistics",
       icon: <Boxes size={16} />,
       points: [
