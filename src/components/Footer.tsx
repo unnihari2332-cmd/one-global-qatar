@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   const quickLinks = [
-    { name: "Home", href: "#hero" },
+    { name: "Home", href: "#home" },
     { name: "About Us", href: "#about" },
     { name: "Global Network", href: "#global-network" },
     { name: "Key Features", href: "#features" },
