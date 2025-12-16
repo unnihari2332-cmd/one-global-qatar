@@ -47,7 +47,8 @@ const Header = () => {
               <img 
                 src="/onegloballogo.png" 
                 alt="One Global Consolidators Logo" 
-                className="w-40 md:w-52 h-auto" // Adjusted width for responsiveness
+                // CHANGE: Reduced width to w-24 (mobile) and w-32 (desktop)
+                className="w-24 md:w-32 h-auto" 
               />
             </a>
 
