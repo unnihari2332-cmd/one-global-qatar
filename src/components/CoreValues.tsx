@@ -1,63 +1,108 @@
-import { Shield, Award, Handshake, Clock } from 'lucide-react';
+import React from 'react';
+import { Shield, Target, BookOpen, Lightbulb } from 'lucide-react';
 
 const CoreValues = () => {
-  const values = [
-    {
-      icon: Shield,
-      title: 'Strive for excellence',
-      description: 'We are a true client-centric company, so we strive for the best possible solutions for our clients.',
-    },
-    {
-      icon: Award,
-      title: 'Accept, learn & educate from best industry practices',
-      description: 'Continuous improvement through industry-leading practices and knowledge sharing.',
-    },
-    {
-      icon: Handshake,
-      title: 'Open & honest relationship with customers',
-      description: 'Building trust through transparency and genuine partnerships.',
-    },
-    {
-      icon: Clock,
-      title: 'Continuous Innovation',
-      description: 'Embracing new technologies and methods to improve our services constantly.',
-    },
+  // Data for the top section bullet points
+  const bulletPoints = [
+    "Integrated multi logistics platforms",
+    "Live end to end supply chain visibility",
+    "Customized portals to customer communications",
+    "Tools to automate customer communications",
+    "Real time business intelligence and reporting"
   ];
 
   return (
-    <section className="py-20 bg-secondary">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-6">
-          <p className="font-body text-accent font-semibold tracking-wider mb-2">OGL - Digital Logistics</p>
-          <p className="font-body text-muted-foreground max-w-3xl mx-auto">
-            It's our solution-based logistics services couple with the best technology that makes us standout. We belive in providing the right services using the right tools at the right time.
-          </p>
+        
+        {/* --- TOP SECTION: Text & Map Image --- */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
+          {/* Left: Text Content */}
+          <div className="space-y-6">
+            <h3 className="text-lg font-bold text-gray-800">OGL - Digital Logistics</h3>
+            <p className="text-gray-600 leading-relaxed">
+              It's our solution-based logistics services couple with the best
+              technology that makes us standout. We believe in providing the
+              right services using the right tools at the right time.
+            </p>
+            <ul className="space-y-3 mt-4">
+              {bulletPoints.map((point, idx) => (
+                <li key={idx} className="flex items-center text-gray-700">
+                  <span className="w-1.5 h-1.5 bg-gray-600 rounded-full mr-3 flex-shrink-0" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Right: Map Image */}
+          <div className="rounded-lg overflow-hidden shadow-lg">
+            <img 
+              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop" 
+              alt="Global Logistics Network" 
+              className="w-full h-full object-cover"
+            />
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-          {values.map((value, index) => {
-            const Icon = value.icon;
-            return (
-              <div
-                key={index}
-                className="text-center animate-fade-in"
-                style={{ animationDelay: `${index * 0.15}s` }}
-              >
-                <div className="relative w-32 h-32 mx-auto mb-6">
-                  <div className="absolute inset-0 rounded-full border-4 border-accent/20" />
-                  <div className="absolute inset-2 rounded-full bg-gradient-to-br from-primary to-navy-light flex items-center justify-center">
-                    <Icon className="w-12 h-12 text-primary-foreground" />
-                  </div>
-                </div>
-                <h3 className="font-heading font-bold text-lg text-primary mb-3">{value.title}</h3>
-                <p className="font-body text-sm text-muted-foreground">{value.description}</p>
-              </div>
-            );
-          })}
+        {/* --- BOTTOM SECTION: Core Values Grid --- */}
+        {/* Layout: Column 1 (Cards) | Column 2 (Tall Image) | Column 3 (Cards) */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          {/* Left Column: 2 Cards */}
+          <div className="flex flex-col justify-between gap-8 h-full">
+            <ValueCard 
+              icon={Target} 
+              title="Strive for excellence" 
+            />
+            <ValueCard 
+              icon={Shield} 
+              title="Open & honest relationship with communications" 
+            />
+          </div>
+
+          {/* Center Column: Tall Image */}
+          <div className="h-full min-h-[400px] rounded-2xl overflow-hidden shadow-xl">
+             <img 
+              src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1000&auto=format&fit=crop" 
+              alt="Truck Logistics" 
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Right Column: 2 Cards */}
+          <div className="flex flex-col justify-between gap-8 h-full">
+            <ValueCard 
+              icon={BookOpen} 
+              title="Adapt, learn & assimilate the best industry practices" 
+            />
+            <ValueCard 
+              icon={Lightbulb} 
+              title="Embrace innovation" 
+            />
+          </div>
+
         </div>
       </div>
     </section>
   );
 };
+
+// Reusable Card Component to match the design in the image
+// (White box, border, centered icon in circle, text below)
+const ValueCard = ({ icon: Icon, title }: { icon: any, title: string }) => (
+  <div className="bg-white border-2 border-gray-200 rounded-xl p-8 flex flex-col items-center text-center justify-center h-full hover:shadow-lg transition-shadow duration-300 min-h-[220px]">
+    <div className="mb-6 relative">
+      {/* Circle Ring */}
+      <div className="w-20 h-20 rounded-full border-4 border-gray-900 flex items-center justify-center">
+        {/* Inner Icon styling to look like the 'C' logo */}
+        <Icon className="w-8 h-8 text-rose-600" strokeWidth={2.5} />
+      </div>
+    </div>
+    <h3 className="font-bold text-gray-800 text-lg leading-tight px-2">
+      {title}
+    </h3>
+  </div>
+);
 
 export default CoreValues;
