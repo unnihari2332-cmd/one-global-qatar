@@ -1,13 +1,23 @@
+import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, User, Users, Locate, Ship } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-// --- Component for Navigation CTA Buttons ---
+// --- Configuration for the Rotating Text ---
+const HERO_MESSAGES = [
+  "Cost Effective and Top Quality LCL & FCL Services.",
+  "Top-notch warehousing services for all your shipments.",
+  "Get the best LCL & FCL services at unbeatable prices.",
+  "Get the best logistics service at very competitive prices."
+];
+
+// --- Component for Navigation CTA Buttons (Unchanged) ---
 const HeroNavButtons = () => {
   const buttons = [
-    { icon: User, label: 'Customer Portal', href: '/customer-portal' },
-    { icon: Users, label: 'Partner Portal', href: '/partner-portal' },
-    { icon: Locate, label: 'Tracking', href: '/tracking' },
-    { icon: Ship, label: 'Sailing Schedule', href: '/sailing-schedule' },
+    { icon: User, label: 'Customer Portal', url: 'https://consolmate.com/auth/login/9' },
+    { icon: Users, label: 'Partner Portal',  url: 'https://pp.onlinetracking.co/auth/login/9' },
+    { icon: Locate, label: 'Tracking', url: 'http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:102:::::P0_GROUP_RID:188' },
+    { icon: Ship, label: 'Sailing Schedule', url: 'http://ec2-13-229-38-56.ap-southeast-1.compute.amazonaws.com:8081/ords/f?p=107:104:::::P0_GROUP_RID:188', },
   ];
 
   return (
@@ -19,10 +29,7 @@ const HeroNavButtons = () => {
             {buttons.map((button, index) => (
               <a
                 key={index}
-                href={button.href}
-                // Optional: Add target="_blank" if these go to external sites
-                // target="_blank" 
-                // rel="noopener noreferrer"
+                href={button.url}
                 className="
                   group relative flex items-center justify-center space-x-3
                   w-[200px] h-[60px] rounded-xl
@@ -55,6 +62,17 @@ const HeroNavButtons = () => {
 
 // --- Main Hero Component ---
 const Hero = () => {
+  const [index, setIndex] = useState(0);
+
+  // Auto-scroll logic: Change text every 4 seconds
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prevIndex) => (prevIndex + 1) % HERO_MESSAGES.length);
+    }, 4000); 
+
+    return () => clearInterval(timer);
+  }, []);
+
   return (
     <section id="home" className="relative h-[600px] md:h-[750px] overflow-hidden">
 
@@ -82,12 +100,21 @@ const Hero = () => {
             with One Global Consolidators
           </h1>
 
-          <p
-            className="font-body text-lg md:text-xl text-gray-100 mb-8 animate-slide-in-left"
-            style={{ animationDelay: '0.4s' }}
-          >
-            Your trusted partner for sea and air freight solutions. We deliver excellence across borders with reliability and precision.
-          </p>
+          {/* --- Auto Scrolling Text Area --- */}
+          <div className="h-24 md:h-20 mb-8 overflow-hidden relative">
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={index} // Key change triggers the animation
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -20, opacity: 0 }}
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="font-body text-lg md:text-xl text-gray-100 absolute top-0 left-0"
+              >
+                {HERO_MESSAGES[index]}
+              </motion.p>
+            </AnimatePresence>
+          </div>
 
           <div className="flex flex-wrap gap-4 animate-fade-in" style={{ animationDelay: '0.6s' }}>
             <a href="/services">
