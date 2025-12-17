@@ -25,7 +25,16 @@ const KeyFeatures = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-background relative">
+    <section
+      id="services"
+      className="py-24 relative overflow-hidden"
+      style={{
+        backgroundImage: "url('/team-v3-shape1.png')",
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+      }}
+    >
       <div className="container mx-auto px-4">
         {/* Heading */}
         <div className="text-center mb-20">
@@ -59,7 +68,7 @@ const KeyFeatures = () => {
                   </p>
                 </div>
 
-                {/* Step Number with Hover Effect */}
+                {/* Step Number Hover Effect */}
                 <div
                   className="
                     absolute -bottom-12 left-1/2 -translate-x-1/2
@@ -68,7 +77,7 @@ const KeyFeatures = () => {
                     opacity-40
                     select-none
                     transition-all duration-300
-                    group-hover:text-gray-600
+                    group-hover:text-gray-700
                     group-hover:opacity-90
                     group-hover:scale-110
                   "
