@@ -44,7 +44,7 @@ const CoreValues = () => {
           {/* Right: Map Image */}
           <div className="rounded-lg overflow-hidden shadow-lg">
             <img 
-              src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=1000&auto=format&fit=crop" 
+              src="/port.jpg" 
               alt="Global Logistics Network" 
               className="w-full h-full object-cover"
             />
