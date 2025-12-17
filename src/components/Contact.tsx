@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, Globe } from 'lucide-react'; // Added Globe
+import { MapPin, Phone, Mail, Clock, Send, Globe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
 
-// Using about-bg.webp directly as background (no white overlay)
 import bgImage from '/about-bg.webp';
 
 const Contact = () => {
@@ -56,7 +55,7 @@ const Contact = () => {
       lines: ['info@oneglobalqatar.com'],
     },
     {
-      icon: Globe, // Changed from Website to Globe
+      icon: Globe,
       title: 'Website',
       lines: ['www.oneglobalqatar.com'],
     },
@@ -98,7 +97,7 @@ const Contact = () => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Form */}
+          {/* Left Column: Form Box */}
           <div className="bg-white/90 p-8 rounded-xl shadow-md backdrop-blur-sm animate-slide-in-left">
             <h3 className="font-heading text-xl font-bold text-primary mb-6">
               Send us a Message
@@ -152,21 +151,24 @@ const Contact = () => {
             </form>
           </div>
 
-          {/* Contact Info */}
-          <div className="animate-slide-in-right">
-            <h3 className="font-heading text-xl font-bold text-primary mb-6 drop-shadow-md">
+          {/* Right Column: Contact Info Box (Unified) */}
+          <div className="bg-white/90 p-8 rounded-xl shadow-md backdrop-blur-sm animate-slide-in-right h-fit">
+            <h3 className="font-heading text-xl font-bold text-primary mb-6">
               Our Office
             </h3>
 
-            <div className="space-y-6">
+            <div className="space-y-8"> 
               {contactInfo.map((info, index) => {
                 const Icon = info.icon;
 
                 return (
-                  <div key={index} className="flex gap-4 bg-white/80 p-4 rounded-xl backdrop-blur-sm shadow-sm">
-                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center">
+                  <div key={index} className="flex gap-4 items-start">
+                    {/* Icon Box */}
+                    <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center shrink-0">
                       <Icon className="w-5 h-5 text-primary-foreground" />
                     </div>
+                    
+                    {/* Text Details */}
                     <div>
                       <h4 className="font-heading font-semibold text-primary mb-1">
                         {info.title}
@@ -174,7 +176,7 @@ const Contact = () => {
                       {info.lines.map((line, idx) => (
                         <p
                           key={idx}
-                          className="font-body text-muted-foreground text-sm"
+                          className="font-body text-muted-foreground text-sm leading-relaxed"
                         >
                           {line}
                         </p>
