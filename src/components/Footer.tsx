@@ -12,11 +12,11 @@ const Footer = () => {
   const quickLinks = [
     { name: "Home", href: "/#home" },
     { name: "About Us", href: "/#about" },
-    { name: "Global Network", href: "/#globalnetwork" },
-    { name: "Key Features", href: "/#keyfeatures" },
-    { name: "Vision & Mission", href: "/#visionmission" },
-    { name: "Core Values", href: "/#corevalues" },
-    { name: "Value Propositions", href: "/#valuepropositions" },
+    { name: "Global Network", href: "/#global" },
+    { name: "Key Features", href: "/#services" },
+    { name: "Vision & Mission", href: "/#vision" },
+    { name: "Core Values", href: "/#core" },
+    { name: "Value Propositions", href: "/#value" },
     { name: "Contact Us", href: "/#contact" },
   ];
 
