@@ -7,6 +7,7 @@ import {
 } from 'lucide-react';
 
 const CoreValues = () => {
+  // Top bullet points
   const bulletPoints = [
     "Integrated multi logistics platforms",
     "Live end to end supply chain visibility",
@@ -15,6 +16,7 @@ const CoreValues = () => {
     "Real time business intelligence and reporting",
   ];
 
+  // Core values
   const values = [
     {
       title: 'Strive for excellence',
@@ -38,8 +40,9 @@ const CoreValues = () => {
     <section className="py-20 bg-white">
       <div className="container mx-auto px-4">
 
-        {/* TOP SECTION */}
+        {/* TOP CONTENT */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-24">
+          {/* LEFT */}
           <div className="space-y-6">
             <h3 className="text-lg font-semibold text-blue-900">
               OGL - Digital Logistics
@@ -54,13 +57,14 @@ const CoreValues = () => {
             <ul className="space-y-3 mt-4">
               {bulletPoints.map((point, idx) => (
                 <li key={idx} className="flex items-start text-gray-700">
-                  <span className="mt-2 w-2 h-2 bg-blue-800 rounded-full mr-3 flex-shrink-0" />
+                  <span className="mt-2 w-2 h-2 bg-blue-900 rounded-full mr-3 flex-shrink-0" />
                   {point}
                 </li>
               ))}
             </ul>
           </div>
 
+          {/* RIGHT IMAGE */}
           <div className="rounded-xl overflow-hidden shadow-lg">
             <img
               src="/port.jpg"
@@ -70,7 +74,7 @@ const CoreValues = () => {
           </div>
         </div>
 
-        {/* CORE VALUES */}
+        {/* CORE VALUES GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {values.map((item, index) => (
             <ValueCard
@@ -86,7 +90,7 @@ const CoreValues = () => {
   );
 };
 
-// VALUE CARD
+// CARD COMPONENT
 const ValueCard = ({
   title,
   Icon,
@@ -94,19 +98,26 @@ const ValueCard = ({
   title: string;
   Icon: React.ElementType;
 }) => (
-  <div className="group bg-white border border-gray-100 rounded-2xl p-10 flex flex-col items-center text-center min-h-[260px]
-                  shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
-
-    <div className="mb-6 w-16 h-16 rounded-full border-2 border-blue-900
-                    flex items-center justify-center
-                    group-hover:bg-blue-900 transition-colors duration-300">
+  <div
+    className="group bg-white border border-gray-100 rounded-2xl p-10
+               flex flex-col items-center text-center min-h-[260px]
+               shadow-sm hover:shadow-xl hover:-translate-y-2
+               transition-all duration-300"
+  >
+    {/* ICON */}
+    <div
+      className="mb-6 w-16 h-16 rounded-full border-2 border-blue-900
+                 flex items-center justify-center
+                 group-hover:bg-blue-900 transition-colors duration-300"
+    >
       <Icon
         size={28}
         className="text-rose-600 group-hover:text-white transition-colors duration-300"
       />
     </div>
 
-    <h3 className="font-semibold text-gray-800 text-lg leading-snug px-2">
+    {/* TITLE — IMAGE MATCH STYLE */}
+    <h3 className="text-[#0f2454] font-extrabold text-[20px] leading-[1.3] text-center max-w-[230px]">
       {title}
     </h3>
   </div>
