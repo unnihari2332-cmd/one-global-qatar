@@ -4,23 +4,23 @@ const KeyFeatures = () => {
   const features = [
     {
       icon: Package,
-      title: 'Optimize Orders',
-      description: 'Optimize orders into container shipments for efficient delivery.',
+      title: 'Optimize Choices',
+      description: 'Optimum choices with multiple sailings on each tradeline.',
     },
     {
       icon: Boxes,
-      title: 'Consolidation Handling',
-      description: 'Expert consolidation handling for both LCL and FCL shipments.',
+      title: 'Consolidation Trucking',
+      description: 'Special Consolidated Trucking options all over Europe.',
     },
     {
       icon: FileCheck,
       title: 'Comprehensive',
-      description: 'We offer comprehensive full container services worldwide.',
+      description: 'We offer a very comprehensive freight management services.',
     },
     {
       icon: DollarSign,
       title: 'Cost Effective',
-      description: 'Cost-effective solutions tailored for your shipping needs.',
+      description: 'Cost effective services through well negotiated carrier contracts and schedules.',
     },
   ];
 
