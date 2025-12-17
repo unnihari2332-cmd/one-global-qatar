@@ -1,117 +1,150 @@
-import { useState } from 'react';
-import { Menu, X, Phone, Mail, Facebook, Linkedin } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import {
+  Facebook,
+  Linkedin,
+  MapPin,
+  Phone,
+  Mail,
+} from "lucide-react";
 
-const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const Footer = () => {
+  const scrollToSection = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
-  const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Our Services', href: '#services' },
-    { name: 'Vision & Mission', href: '#vision' },
-    { name: 'Contact Us', href: '#contact' },
+  const quickLinks = [
+    { name: "Home", id: "home" },
+    { name: "About Us", id: "about" },
+    { name: "Key Features", id: "services" },
+    { name: "Vision & Mission", id: "vision" },
+    { name: "Contact Us", id: "contact" },
+  ];
+
+  // ONLY Facebook and LinkedIn are included here
+  const socialLinks = [
+    {
+      icon: Facebook,
+      href: "https://www.facebook.com/oneglobalqatar",
+      label: "Facebook",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/company/onegloballogistics/?viewAsMember=true",
+      label: "LinkedIn",
+    },
   ];
 
   return (
-    <header className="w-full sticky top-0 z-50 shadow-md">
-      
-      {/* Top Bar */}
-      <div className="bg-primary py-2 px-4">
-        <div className="container mx-auto flex justify-between items-center text-primary-foreground text-sm">
-          <div className="flex items-center gap-6">
-            <a href="tel:+97455855836" className="flex items-center gap-2 hover:text-accent transition-colors">
-              <Phone className="w-4 h-4" />
-              <span className="hidden sm:inline">+974 558 558 36</span>
-            </a>
-            <a href="mailto:info@oneglobalqatar.com" className="flex items-center gap-2 hover:text-accent transition-colors">
-              <Mail className="w-4 h-4" />
-              <span className="hidden sm:inline">info@oneglobalqatar.com</span>
-            </a>
+    <footer className="bg-primary text-primary-foreground">
+      {/* MAIN FOOTER */}
+      <div className="container mx-auto px-6 py-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* ABOUT + LOGO */}
+          <div>
+            <img
+              src="/onegloballogo.png"
+              alt="One Global Logistics"
+              className="h-14 mb-4"
+            />
+
+            <h3 className="font-heading font-bold text-base mb-3">About Us</h3>
+            <p className="text-sm text-primary-foreground/75 leading-6">
+              One Global Logistics Services W.L.L is a Qatar based global NVOCC
+              operator providing LCL consolidation services worldwide.
+            </p>
           </div>
-          <div className="flex items-center gap-3">
-            <a 
-              href="https://www.facebook.com/oneglobalqatar" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="Visit our Facebook page"
-              className="hover:text-accent transition-colors"
-            >
-              <Facebook className="w-4 h-4" />
-            </a>
-            <a 
-              href="https://www.linkedin.com/company/onegloballogistics/?viewAsMember=true" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              aria-label="Visit our LinkedIn page"
-              className="hover:text-accent transition-colors"
-            >
-              <Linkedin className="w-4 h-4" />
-            </a>
+
+          {/* QUICK LINKS */}
+          <div className="md:pl-8">
+            <h3 className="font-heading font-bold text-base mb-3">
+              Quick Links
+            </h3>
+
+            <ul className="space-y-1.5">
+              {quickLinks.map((link) => (
+                <li key={link.name}>
+                  <button
+                    onClick={() => scrollToSection(link.id)}
+                    className="group flex items-center gap-2 text-sm text-primary-foreground/75 hover:text-accent transition"
+                  >
+                    <span className="text-accent opacity-0 group-hover:opacity-100 transition">
+                      →
+                    </span>
+                    {link.name}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* OFFICE */}
+          <div>
+            <h3 className="font-heading font-bold text-base mb-3">
+              Our Office
+            </h3>
+
+            <div className="space-y-3 text-sm text-primary-foreground/75">
+              <div className="flex gap-2">
+                <MapPin className="w-4 h-4 text-accent mt-1" />
+                <div>
+                  <p className="font-semibold">
+                    One Global Logistics Services W.L.L
+                  </p>
+                  <p>Office no: 48, 2nd Floor</p>
+                  <p>Al Matar Centre, Old Airport Road</p>
+                  <p>Doha, Qatar</p>
+                </div>
+              </div>
+
+              <div className="flex gap-2 items-center">
+                <Phone className="w-4 h-4 text-accent" />
+                <p>+974 558 558 36 / 446 79 444</p>
+              </div>
+
+              <div className="flex gap-2 items-center">
+                <Mail className="w-4 h-4 text-accent" />
+                <a
+                  href="mailto:info@oneglobalqatar.com"
+                  className="hover:text-accent underline"
+                >
+                  info@oneglobalqatar.com
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Navigation */}
-      <nav className="bg-background">
-        <div className="container mx-auto px-4">
-          <div className="flex justify-between items-center py-4">
-            {/* Logo */}
-            <a href="#home" className="flex items-center">
-              <img 
-                src="/onegloballogo.png" 
-                alt="One Global Consolidators Logo" 
-                // Reduced width: w-16 (mobile) and w-24 (desktop)
-                className="w-16 md:w-24 h-auto" 
-              />
-            </a>
+      {/* COPYRIGHT */}
+      <div className="border-t border-primary-foreground/10">
+        <div className="container mx-auto px-6 py-3 flex flex-col md:flex-row justify-between items-center gap-3">
+          <p className="text-xs text-primary-foreground/60">
+            © 2025 One Global Logistics. All rights reserved.
+          </p>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => (
+          <div className="flex gap-3">
+            {socialLinks.map((social) => {
+              const Icon = social.icon;
+              return (
                 <a
-                  key={link.name}
-                  href={link.href}
-                  className="px-4 py-2 font-body text-sm font-medium text-foreground hover:text-accent transition-colors relative group"
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"             // Opens in new tab
+                  rel="noopener noreferrer"   // Security best practice
+                  aria-label={`Visit our ${social.label} page`}
+                  className="hover:text-accent transition-colors"
                 >
-                  {link.name}
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-accent transition-all group-hover:w-3/4" />
+                  <Icon className="w-4 h-4" />
                 </a>
-              ))}
-            </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              className="lg:hidden p-2 text-foreground"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+              );
+            })}
           </div>
-
-          {/* Mobile Navigation */}
-          {isMenuOpen && (
-            <div className="lg:hidden pb-4 animate-fade-in">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="block px-4 py-3 font-body text-foreground hover:bg-secondary hover:text-accent transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.name}
-                </a>
-              ))}
-              <Button className="w-full mt-2 bg-accent hover:bg-red-hover text-accent-foreground font-body">
-                Get a Quote
-              </Button>
-            </div>
-          )}
         </div>
-      </nav>
-    </header>
+      </div>
+    </footer>
   );
 };
 
-export default Header;
+export default Footer;
