@@ -7,7 +7,7 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Services from "./pages/Services";
 import GlobalPresence from "./pages/GlobalPresence";
-import FCL from "./pages/services/FCL";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -22,8 +22,6 @@ const App = () => (
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
           <Route path="/global-presence" element={<GlobalPresence />} />
-           {/* Service specific pages */}
-            <Route path="/services/fcl" element={<FCL />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
